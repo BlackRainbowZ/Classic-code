@@ -71,11 +71,12 @@
 //	return 0;
 //}
 
-//5.在一个有序数组中查找具体的某个数字n。
+//5.二分查找
+//代码1
 //#include <stdio.h>
 //int main()
 //{
-//	int arr[] = { 0,1,2,3,4,5,6,7,8,9,100 };
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
 //	int k = 0;
 //	int sz = sizeof(arr) / sizeof(arr[0]);
 //	int left = 0;
@@ -102,6 +103,52 @@
 //	if (left > right)
 //	{
 //		printf("找不到\n");
+//	}
+//
+//	return 0;
+//}
+
+//代码2
+//#include <stdio.h>
+//int binary_search(int a[], int k, int s)
+//{
+//	int left = 0;
+//	int right = s - 1;
+//
+//	while (left <= right)
+//	{
+//		int mid = (left + right) / 2;
+//		if (a[mid] < k)
+//		{
+//			left = mid + 1;
+//		}
+//		else if (a[mid] > k)
+//		{
+//			right = mid - 1;
+//		}
+//		else
+//		{
+//			return mid;
+//		}
+//	}
+//	return -1;
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int key = 0;
+//	scanf("%d", &key);
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int ret = binary_search(arr, key, sz);
+//
+//	if (-1 == ret)
+//	{
+//		printf("找不到\n");
+//	}
+//	else
+//	{
+//		printf("找到了，下标是:%d\n", ret);
 //	}
 //
 //	return 0;
@@ -188,6 +235,7 @@
 //}
 
 //8.判断是否为闰年
+//代码1
 //#include <stdio.h>
 //int main()
 //{
@@ -195,32 +243,88 @@
 //	printf("请输入年号:");
 //	scanf("%d", &year);
 //	if ((year % 4 == 0 && year % 100 == 0) || (year % 400 == 0))
+// {
 //		printf("%d是闰年\n", year);
+// }
 //	else
+// {
 //		printf("%d不是闰年\n", year);
+// }
+//	return 0;
+//}
+
+//代码2
+//#include <stdio.h>
+//int is_leap_year(int n)
+//{
+//	return ((n % 4 == 0 && n % 100 != 0) || (n % 400 == 0));
+//}
+//int main()
+//{
+//	int y = 0;
+//	scanf("%d", &y);
+//	if (is_leap_year(y))
+//	{
+//		printf("%d是闰年", y);
+//	}
+//	else
+//	{
+//		printf("%d不是闰年", y);
+//	}
 //	return 0;
 //}
 
 //9.判断是否为素数
+//代码1
+//#include <stdio.h>
+//#include <math.h>
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	scanf("%d", &i);
+//	for (j = 2; j <= sqrt(i); j++)
+//	{
+//		if (i % j == 0)
+//		{
+//			printf("%d不是素数\n", i);
+//			break;
+//		}
+//	}
+//	if (j > sqrt(i))
+//	{
+//		printf("%d是素数\n", i);
+//	}
+//
+//	return 0;
+//}
+
+//代码2
 #include <stdio.h>
 #include <math.h>
+
+int is_prime(int n)
+{
+	int j = 0;
+	for (j = 2; j <= sqrt(n); j++)
+	{
+		if (n % j == 0)
+			return 0;
+	}
+	return 1;
+}
+
 int main()
 {
 	int i = 0;
-	int j = 0;
 	scanf("%d", &i);
-	for (j = 2; j <= sqrt(i); j++)
+	if (is_prime(i))
 	{
-		if (i % j == 0)
-		{
-			printf("%d不是素数\n",i);
-			break;
-		}
+		printf("%d是素数", i);
 	}
-	if (j > sqrt(i))
+	else
 	{
-		printf("%d是素数\n", i);
+		printf("%d不是素数", i);
 	}
-
 	return 0;
 }

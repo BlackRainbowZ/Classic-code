@@ -1,1 +1,2 @@
 D:\github-code\C-practice\classic code1\x64\Debug\classic code1.exe
+D:\github-code\Classic-code\classic code1\x64\Debug\classic code1.exe
